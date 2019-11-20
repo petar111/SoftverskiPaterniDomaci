@@ -27,14 +27,6 @@ public class PanelInputPerson extends javax.swing.JPanel implements IValue{
         prepareView();
     }
 
-    private PanelInputPerson(PanelInputPerson original) {
-        initComponents();
-        inputFirstName = (PanelInputTextField)original.inputFirstName.Clone();
-        inputLastName = (PanelInputTextField)original.inputLastName.Clone();
-        inputGender = (PanelInputTextField)original.inputGender.Clone();
-        inputDate = (PanelInputDate)original.inputDate.Clone();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,10 +122,5 @@ public class PanelInputPerson extends javax.swing.JPanel implements IValue{
         inputLastName.setValue(person.getLastName());
         inputGender.setValue(person.getGender());
         
-    }
-
-    @Override
-    public IValue Clone() {
-        return new PanelInputPerson(this);
     }
 }

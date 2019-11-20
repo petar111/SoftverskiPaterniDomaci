@@ -27,11 +27,6 @@ public class PanelInputDate extends javax.swing.JPanel implements IValue {
         prepareView();
     }
 
-    private PanelInputDate(PanelInputDate original) {
-        initComponents();
-        prepareView(original);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,25 +113,6 @@ public class PanelInputDate extends javax.swing.JPanel implements IValue {
         }
 
     }
-    
-    private void prepareView(PanelInputDate original) {
-        
-        cbDay.removeAllItems();
-        cbMonth.removeAllItems();
-        cbYear.removeAllItems();
-        
-        this.lblError.setText(original.lblError.getText());
-        this.lblFieldText.setText(original.lblFieldText.getText());
-        
-        this.cbDay.setModel(original.cbDay.getModel());
-        this.cbMonth.setModel(original.cbMonth.getModel());
-        this.cbYear.setModel(original.cbYear.getModel());
-        
-        this.cbDay.setSelectedItem(original.cbDay.getSelectedItem());
-        this.cbMonth.setSelectedItem(original.cbMonth.getSelectedItem());
-        this.cbYear.setSelectedItem(original.cbYear.getSelectedItem());
-        
-    }
 
     @Override
     public Object getValue() {
@@ -184,11 +160,4 @@ public class PanelInputDate extends javax.swing.JPanel implements IValue {
         SimpleDateFormat year=new SimpleDateFormat("yyyy");
         cbYear.setSelectedItem(year.format(date));
     }
-
-    @Override
-    public IValue Clone() {
-        return new PanelInputDate(this);
-    }
-
-    
 }

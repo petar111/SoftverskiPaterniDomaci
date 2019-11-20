@@ -48,65 +48,58 @@ public class FrmPersonView extends javax.swing.JPanel {
         
         for (Component component : originalPersonView.getComponents()) {
             
-//            JPanel panelToAdd = new JPanel();
-//            
-//            if(component instanceof PanelInputTextField){
-//                PanelInputTextField txtFieldOriginal = (PanelInputTextField)component;
-//                
-//                PanelInputTextField txtFieldToAdd = new PanelInputTextField();
-//                txtFieldToAdd.getLblFieldText().setText(txtFieldOriginal.getLblFieldText().getText());
-//                txtFieldToAdd.getLblError().setText(txtFieldOriginal.getLblError().getText());
-//                
-//                Object initValue = txtFieldOriginal.getValue();
-//                txtFieldToAdd.initialize(initValue);
-//                
-//                panelToAdd = txtFieldToAdd;
-//            }
-//            
-//            
-//            if(component instanceof PanelInputComboBox){
-//                PanelInputComboBox cboxOriginal = (PanelInputComboBox)component;
-//                
-//                PanelInputComboBox cboxToAdd = new PanelInputComboBox();
-//                cboxToAdd.getLblFieldText().setText(cboxOriginal.getLblFieldText().getText());
-//                cboxToAdd.getLblError().setText(cboxOriginal.getLblError().getText());
-//                
-//                ComboBoxModel model = cboxOriginal.getCbField().getModel();
-//                List<Object> valuesToAdd = new ArrayList<>();
-//                
-//                for (int i = 0; i < model.getSize(); i++) {
-//                    valuesToAdd.add(model.getElementAt(i));
-//                }
-//                
-//                cboxToAdd.initialize(valuesToAdd);
-//                
-//                panelToAdd = cboxToAdd;
-//            }
-//            
-//            if(component instanceof PanelInputDate){
-//                PanelInputDate dateOriginal = (PanelInputDate)component;
-//                
-//                PanelInputDate dateToAdd = new PanelInputDate();
-//                
-//                dateToAdd.getLblFieldText().setText(dateOriginal.getLblFieldText().getText());
-//                dateToAdd.getLblError().setText(dateOriginal.getLblError().getText());
-//                
-//                Date selectedDate = (Date)dateOriginal.getValue();
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-//                Object initValue = sdf.format(selectedDate);
-//                
-//                
-//                dateToAdd.initialize(initValue);
-//                
-//                panelToAdd = dateToAdd;
-//            }
-//            
-//            personViewToAdd.add(panelToAdd);
-
+            JPanel panelToAdd = new JPanel();
             
-            IValue currInputField = (IValue) component;
+            if(component instanceof PanelInputTextField){
+                PanelInputTextField txtFieldOriginal = (PanelInputTextField)component;
+                
+                PanelInputTextField txtFieldToAdd = new PanelInputTextField();
+                txtFieldToAdd.getLblFieldText().setText(txtFieldOriginal.getLblFieldText().getText());
+                txtFieldToAdd.getLblError().setText(txtFieldOriginal.getLblError().getText());
+                
+                Object initValue = txtFieldOriginal.getValue();
+                txtFieldToAdd.initialize(initValue);
+                
+                panelToAdd = txtFieldToAdd;
+            }
             
-            JPanel panelToAdd = (JPanel) currInputField.Clone();
+            
+            if(component instanceof PanelInputComboBox){
+                PanelInputComboBox cboxOriginal = (PanelInputComboBox)component;
+                
+                PanelInputComboBox cboxToAdd = new PanelInputComboBox();
+                cboxToAdd.getLblFieldText().setText(cboxOriginal.getLblFieldText().getText());
+                cboxToAdd.getLblError().setText(cboxOriginal.getLblError().getText());
+                
+                ComboBoxModel model = cboxOriginal.getCbField().getModel();
+                List<Object> valuesToAdd = new ArrayList<>();
+                
+                for (int i = 0; i < model.getSize(); i++) {
+                    valuesToAdd.add(model.getElementAt(i));
+                }
+                
+                cboxToAdd.initialize(valuesToAdd);
+                
+                panelToAdd = cboxToAdd;
+            }
+            
+            if(component instanceof PanelInputDate){
+                PanelInputDate dateOriginal = (PanelInputDate)component;
+                
+                PanelInputDate dateToAdd = new PanelInputDate();
+                
+                dateToAdd.getLblFieldText().setText(dateOriginal.getLblFieldText().getText());
+                dateToAdd.getLblError().setText(dateOriginal.getLblError().getText());
+                
+                Date selectedDate = (Date)dateOriginal.getValue();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+                Object initValue = sdf.format(selectedDate);
+                
+                
+                dateToAdd.initialize(initValue);
+                
+                panelToAdd = dateToAdd;
+            }
             
             personViewToAdd.add(panelToAdd);
         }
@@ -180,11 +173,11 @@ public class FrmPersonView extends javax.swing.JPanel {
 
     private void prepareView() {
         
-////        factory method
-//        PersonViewFactory factory=new SimplePersonViewFactory();
-//        //PersonViewFactory factory = new AdvancedPersonViewFactory();
+        //factory method
+        // PersonViewFactory factory=new SimplePersonViewFactory();
+//        PersonViewFactory factory = new AdvancedPersonViewFactory();
 //        
-//        factory.createProduct();
+//        factory.createPersonView();
 //        
 //        panelPerson.add(factory.getPersonView());
 //        

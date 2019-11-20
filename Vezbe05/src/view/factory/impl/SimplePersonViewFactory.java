@@ -5,13 +5,8 @@
  */
 package view.factory.impl;
 
-import components.fields.PanelInputComboBox;
-import components.fields.PanelInputDate;
 import components.fields.PanelInputTextField;
-import domain.Gender;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JPanel;
 import view.factory.PersonViewFactory;
 
@@ -19,39 +14,33 @@ import view.factory.PersonViewFactory;
  *
  * @author student1
  */
-public class AdvancedPersonViewFactory extends PersonViewFactory{
+public class SimplePersonViewFactory extends PersonViewFactory{
 
     @Override
-    public JPanel createPersonView() {
-        JPanel personViewToCreate =new JPanel();
-        personViewToCreate.setLayout(new GridLayout(4, 1));
+    public void createPersonView() {
+        personView =new JPanel();
+        personView.setLayout(new GridLayout(4, 1));
         PanelInputTextField inputFirstName=new PanelInputTextField();
         PanelInputTextField inputLastName=new PanelInputTextField();
-        PanelInputDate inputDate=new PanelInputDate();
-        PanelInputComboBox inputGender=new PanelInputComboBox();
+        PanelInputTextField inputDate=new PanelInputTextField();
+        PanelInputTextField inputGender=new PanelInputTextField();
         
         inputFirstName.getLblFieldText().setText("First name:");
         inputFirstName.getLblError().setText("");
-        inputFirstName.initialize("");
         inputLastName.getLblFieldText().setText("Last name:");
         inputLastName.getLblError().setText("");
-        inputLastName.initialize("");
         inputDate.getLblFieldText().setText("Date:");
         inputDate.getLblError().setText("");
-        inputDate.initialize("2000");
         inputGender.getLblFieldText().setText("Gender:");
         inputGender.getLblError().setText("");
-        List<Gender> genders = new ArrayList<>();
-        genders.add(Gender.MALE);
-        genders.add(Gender.FEMALE);
-        inputGender.initialize(genders);
         
-        personViewToCreate.add(inputFirstName);
-        personViewToCreate.add(inputLastName);
-        personViewToCreate.add(inputDate);
-        personViewToCreate.add(inputGender);
-        
-        return personViewToCreate;
+        personView.add(inputFirstName);
+        personView.add(inputLastName);
+        personView.add(inputDate);
+        personView.add(inputGender);
+
     }
+
+    
     
 }

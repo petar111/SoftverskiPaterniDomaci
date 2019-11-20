@@ -18,10 +18,6 @@ public abstract class PersonViewFactory {
         return personView;
     }
     
-    public void createProduct(){
-        personView = createPersonView();
-    }
-    
-    public abstract JPanel createPersonView();
+    public abstract void createPersonView();
     
 }

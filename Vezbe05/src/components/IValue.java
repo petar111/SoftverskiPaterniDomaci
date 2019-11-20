@@ -13,5 +13,4 @@ public interface IValue {
     public Object getValue();
     public void initialize(Object initValue);
     public void setValue(Object value);
-    public IValue Clone();
 }

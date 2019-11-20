@@ -5,27 +5,19 @@
  */
 package components.fields;
 
-import java.util.List;
 import components.IValue;
-import javax.swing.JComboBox;
 
 /**
  *
  * @author student1
  */
-public class PanelInputComboBox extends javax.swing.JPanel implements IValue {
+public class PanelInputTextField extends javax.swing.JPanel implements IValue{
 
     /**
-     * Creates new form PanelInputComboBox
+     * Creates new form PanelInputTextField
      */
-    public PanelInputComboBox() {
+    public PanelInputTextField() {
         initComponents();
-        prepareView();
-    }
-
-    private PanelInputComboBox(PanelInputComboBox original) {
-        initComponents();
-        prepareView(original);
     }
 
     /**
@@ -38,15 +30,13 @@ public class PanelInputComboBox extends javax.swing.JPanel implements IValue {
     private void initComponents() {
 
         lblFieldText = new javax.swing.JLabel();
+        txtInputField = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
-        cbField = new javax.swing.JComboBox<>();
 
         lblFieldText.setText("label");
 
         lblError.setForeground(new java.awt.Color(255, 0, 0));
         lblError.setText("label");
-
-        cbField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,56 +48,30 @@ public class PanelInputComboBox extends javax.swing.JPanel implements IValue {
                     .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblFieldText, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(cbField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(txtInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFieldText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> cbField;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblFieldText;
+    private javax.swing.JTextField txtInputField;
     // End of variables declaration//GEN-END:variables
-
-    private void prepareView() {
-        cbField.removeAllItems();
-        
-    }
-    
-    private void prepareView(PanelInputComboBox original) {
-        cbField.removeAllItems();
-        
-        this.lblError.setText(original.lblError.getText());
-        this.lblFieldText.setText(original.lblFieldText.getText());
-        this.cbField.setModel(original.cbField.getModel());
-        
-        this.cbField.setSelectedItem(original.cbField.getSelectedItem());
-    }
 
     @Override
     public Object getValue() {
-        return cbField.getSelectedItem();
-    }
-
-    @Override
-    public void initialize(Object initValue) {
-        List<Object> values = (List<Object>) initValue;
-        for (Object value : values) {
-            cbField.addItem(value);
-        }
+        return txtInputField.getText();
     }
 
     public javax.swing.JLabel getLblError() {
@@ -118,19 +82,17 @@ public class PanelInputComboBox extends javax.swing.JPanel implements IValue {
         return lblFieldText;
     }
 
+    public javax.swing.JTextField getTxtInputField() {
+        return txtInputField;
+    }
+
+    @Override
+    public void initialize(Object initValue) {
+        txtInputField.setText((String) initValue);
+    }
+
     @Override
     public void setValue(Object value) {
-        cbField.setSelectedItem(value);
-    }
-
-    public JComboBox<Object> getCbField() {
-        return cbField;
-    }
-    
-    @Override
-    public PanelInputComboBox Clone(){
-        return new PanelInputComboBox(this);
-    }
-
-    
+        txtInputField.setText(value.toString());
+       }
 }
