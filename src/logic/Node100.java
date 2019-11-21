@@ -74,6 +74,36 @@ public class Node100 extends Node {
             next.refreshPanel(panel, map);
         }
     }
+
+    @Override
+    public int returnAmount(Currency currency) {
+        
+        if (currency.getAmount() >= 100) {
+            
+            int bills = Machine.getInstance().getBillCount().get("100");
+            
+            int a = currency.getAmount() / 100;
+            int b = currency.getAmount() % 100;
+            
+            if(a <= bills){
+            }else{
+                b = b + (a - bills)*100;
+            }
+            
+            
+            if (next != null) {
+                return bills*100 + next.returnAmount(new Currency(b));
+            }
+            return bills*100;
+            
+        } else {
+            if (next != null) {
+                return next.returnAmount(currency);
+            }
+            return 0;
+        }
+        
+    }
     
     
 

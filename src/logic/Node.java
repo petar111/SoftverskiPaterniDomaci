@@ -32,5 +32,7 @@ public abstract class Node {
     public abstract void refreshPanel(JPanel panel, Map<String, Integer> map);
 
     public abstract void getCurrency(Currency currency, Map<String, Integer> map);
+    
+    public abstract int returnAmount(Currency currency);
 
 }

@@ -75,4 +75,34 @@ public class Node10 extends Node{
         }
     }
     
+    @Override
+    public int returnAmount(Currency currency) {
+        
+        if (currency.getAmount() >= 10) {
+            
+            int bills = Machine.getInstance().getBillCount().get("10");
+            
+            int a = currency.getAmount() / 10;
+            int b = currency.getAmount() % 10;
+            
+            if(a <= bills){
+            }else{
+                b = b + (a - bills)*10;
+            }
+            
+            
+            if (next != null) {
+                return bills*10 + next.returnAmount(new Currency(b));
+            }
+            return bills*10;
+            
+        } else {
+            if (next != null) {
+                return next.returnAmount(currency);
+            }
+            return 0;
+        }
+        
+    }
+    
 }

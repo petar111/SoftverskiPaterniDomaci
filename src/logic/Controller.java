@@ -5,6 +5,9 @@
  */
 package logic;
 
+import domain.Currency;
+import java.util.Map;
+
 /**
  *
  * @author siux
@@ -45,6 +48,10 @@ public class Controller {
     public boolean checkEnoughMoney(int amount, int price) {
         return amount >= price;
     }
+
+  
+
+  
     
     
     

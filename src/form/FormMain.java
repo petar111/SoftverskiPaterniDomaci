@@ -250,15 +250,15 @@ public class FormMain extends javax.swing.JDialog implements DocumentListener {
         try {
             checkEnoughMoney();
             
-            int amountInMachine = Machine.getInstance().calculateAmountIn();
+            //int amountInMachine = Machine.getInstance().calculateAmountIn();
             int amountOfChange = Integer.parseInt(txtReturns.getText());
+            int returnAmount = Controller.getInstance().getChain().returnAmount(new Currency(amountOfChange));
+            //boolean enoughInMachine = Controller.getInstance().checkEnoughMoney(amountInMachine, amountOfChange);
             
-            boolean enoughInMachine = Controller.getInstance().checkEnoughMoney(amountInMachine, amountOfChange);
             
-            
-            if(!enoughInMachine){
+            if( returnAmount < amountOfChange){
                 int option = JOptionPane.showConfirmDialog(this, "Warning! The machine will not be able to return the whole amount of change.\n" + 
-                                                    "Change to return: " + amountInMachine + "\n" + 
+                                                    "Change to return: " + returnAmount + "\n" + 
                                                     "Do you want to buy the product?", "Warning!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if(option == JOptionPane.NO_OPTION){
                     clearAllFields();
